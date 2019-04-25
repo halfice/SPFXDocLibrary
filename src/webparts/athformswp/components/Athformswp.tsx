@@ -18,9 +18,11 @@ import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
 import { mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
 import { Panel, PanelType } from 'office-ui-fabric-react/lib/Panel';
 var Symbol = require('es6-symbol/polyfill');
-import { DefaultButton,PrimaryButton } from 'office-ui-fabric-react';
+import { DefaultButton, PrimaryButton } from 'office-ui-fabric-react';
 import "video-react/dist/video-react.css"; // import css
 import { Player } from 'video-react';
+import { saveAs } from 'file-saver';
+var FileSaver = require('file-saver');
 
 
 
@@ -93,7 +95,7 @@ export default class Athformswp extends React.Component<IAthformswpProps, {}> {
         }
         Arraysx.push(NewData1);
         //now getting files
-        var FinalName1 = "234item" + counterlist;
+        var FinalName1 = "234item";// + counterlist;
         r.Files.forEach(item => {
           var NewData = {
             key: counterlist,
@@ -161,7 +163,7 @@ export default class Athformswp extends React.Component<IAthformswpProps, {}> {
 
 
         //now getting files
-        var FinalName1 = "234item" + counterlist;
+        var FinalName1 = "234item";// + counterlist;
         r.Files.forEach(item => {
           var NewData = {
             key: counterlist,
@@ -273,11 +275,23 @@ export default class Athformswp extends React.Component<IAthformswpProps, {}> {
 
   };
 
-  private downloadDocument(url) {
-    var link = document.createElement("a");
-    link.download = name;
-    link.href = url;
-    link.click();
+  private downloadDocument(filenames,url) {
+
+    var NewISiteUrl = this.props.SiteUrl;
+    var NewSiteUrl = NewISiteUrl.replace("/SitePages", "");
+    let webx = new Web(NewSiteUrl);
+    var CheckCurrentNumberNavigation = this.state.FlagStageForBreadCrum;
+    var Arraysx = [];
+    var Arraysx1 = [];
+    var counterlist = 1;
+    webx.getFileByServerRelativeUrl(url).getBlob().then((blob: Blob) => {
+      FileSaver.saveAs(blob, filenames);
+
+
+    });
+
+    
+    
   }
 
 
@@ -332,7 +346,7 @@ export default class Athformswp extends React.Component<IAthformswpProps, {}> {
       CompleteItemArray[0]["Name"].indexOf(".jpg") > -1 ||
       CompleteItemArray[0]["Name"].indexOf(".otf") > -1 ||
       CompleteItemArray[0]["Name"].indexOf(".doc") > -1) {
-      this.downloadDocument(CompleteItemArray[0]["Name"]);
+      this.downloadDocument(CompleteItemArray[0]["Name"],CompleteItemArray[0]["serverurls"]);
     } else {
       this.gettheFoldersWithFiles(CompleteItemArray[0]["serverurls"]);
       //serverurls
@@ -407,7 +421,7 @@ export default class Athformswp extends React.Component<IAthformswpProps, {}> {
 
   public render(): React.ReactElement<IAthformswpProps> {
 
-    
+
 
     /*List work Inside Render */
     function _renderItemColumnMonitor(item: any, index: number, column: IColumn) {
@@ -430,15 +444,15 @@ export default class Athformswp extends React.Component<IAthformswpProps, {}> {
             >
               <span>
                 <div className={styles.foldersdivpadding}>
-              <PrimaryButton onClick={this._hidePanel.bind(this)}>Close</PrimaryButton>
-              </div>
+                  <PrimaryButton onClick={this._hidePanel.bind(this)}>Close</PrimaryButton>
+                </div>
 
                 <Player
                   playsInline
                   poster="/assets/poster.png"
                   src={this.state.CurrentVideoUrl}
                 />
-               
+
 
               </span>
             </Panel>
@@ -487,40 +501,40 @@ export default class Athformswp extends React.Component<IAthformswpProps, {}> {
           if (item.name.indexOf("item") > -1) {
             if (item.serverurls.indexOf(".pdf") > -1) {
               return (
-                <img src="https://arabtec.sharepoint.com/sites/ATH/SiteAssets/pdf.png" width="35px" height="40px" />
+                <img src="https://***.sharepoint.com/sites/ATH/SiteAssets/pdf.png" width="35px" height="40px" />
               );
             }
             if (item.serverurls.indexOf(".doc") > -1 || item.serverurls.indexOf(".docx") > -1) {
               return (
-                <img src="https://arabtec.sharepoint.com/sites/ATH/SiteAssets/dox.png" width="40px" height="40px" />
+                <img src="https://***.sharepoint.com/sites/ATH/SiteAssets/dox.png" width="40px" height="40px" />
               );
             }
 
             if (item.serverurls.indexOf(".pptx") > -1) {
               return (
-                <img src="https://arabtec.sharepoint.com/sites/ATH/SiteAssets/pptx.png" width="40px" height="40px" />
+                <img src="https://***.sharepoint.com/sites/ATH/SiteAssets/pptx.png" width="40px" height="40px" />
               );
             }
             if (item.serverurls.indexOf(".mp4") > -1) {
               return (
-                <img src="https://arabtec.sharepoint.com/sites/ATH/SiteAssets/mp4.png" width="40px" height="40px" />
+                <img src="https://***.sharepoint.com/sites/ATH/SiteAssets/mp4.png" width="40px" height="40px" />
               );
             }
 
             if (item.serverurls.indexOf(".otf") > -1 || item.serverurls.indexOf(".ttf") > -1) {
               return (
-                <img src="https://arabtec.sharepoint.com/sites/ATH/SiteAssets/fonts.png" width="40px" height="40px" />
+                <img src="https://***.sharepoint.com/sites/ATH/SiteAssets/fonts.png" width="40px" height="40px" />
               );
             }
 
             if (item.serverurls.indexOf(".xlsx") > -1 || item.serverurls.indexOf(".xls") > -1) {
               return (
-                <img src="https://arabtec.sharepoint.com/sites/ATH/SiteAssets/excel.png" width="40px" height="40px" />
+                <img src="https://***.sharepoint.com/sites/ATH/SiteAssets/excel.png" width="40px" height="40px" />
               );
             }
 
             return (
-              <img src="https://arabtec.sharepoint.com/sites/ATH/SiteAssets/fonts.png" width="40px" height="40px" />
+              <img src="https://***.sharepoint.com/sites/ATH/SiteAssets/fonts.png" width="40px" height="40px" />
             );
 
 
@@ -533,11 +547,12 @@ export default class Athformswp extends React.Component<IAthformswpProps, {}> {
             );
           }
         case 'Name':
-          if (item.name.indexOf("item") > -1) {
+          if (item.name.indexOf("234item") > -1) {
             return (
               item.Name
             );
           } else {
+
             return (
               item.Name
             );
@@ -556,3 +571,15 @@ export default class Athformswp extends React.Component<IAthformswpProps, {}> {
   }
 }
 
+
+/* if (item.name.indexOf("234item") > -1 ) {
+            return (
+             <a href={item.serverurls} target="_blank">{item.Name}</a>
+            );
+          } else {
+
+            return (
+              item.Name
+            );
+          }
+          */

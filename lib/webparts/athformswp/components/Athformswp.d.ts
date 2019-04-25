@@ -12,7 +12,7 @@ export default class Athformswp extends React.Component<IAthformswpProps, {}> {
     gettheFoldersInner(event: any): void;
     componentDidMount(): void;
     private _onBreadcrumbItemClicked;
-    private downloadDocument(url);
+    private downloadDocument(filenames, url);
     private _onColumnClick;
     private _copyAndSort<T>(items, columnKey, isSortedDescending?);
     private _onItemInvoked(item);
