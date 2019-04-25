@@ -1,0 +1,8 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "version": "1.4.1",
+    "libraryName": "solathwebpt",
+    "libraryId": "2b1668ad-2fca-4dd6-b86e-e5b0f421defd",
+    "environment": "spo"
+  }
+}

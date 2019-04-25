@@ -1,0 +1,23 @@
+{
+  "$schema": "https://dev.office.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "athformswp-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/athformswp/AthformswpWebPart.js",
+          "manifest": "./src/webparts/athformswp/AthformswpWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {
+    "jquery": {
+      "path": "https://arabtec.sharepoint.com/sites/ATH/style%20library/myintranet/scripts/jquery.js",
+      "globalName": "jQuery"
+    }
+  },
+  "localizedResources": {
+    "AthformswpWebPartStrings": "lib/webparts/athformswp/loc/{locale}.js"
+  }
+}

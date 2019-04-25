@@ -1,0 +1,13 @@
+{
+  "$schema": "https://dev.office.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "solathwebpt-client-side-solution",
+    "id": "2b1668ad-2fca-4dd6-b86e-e5b0f421defd",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true
+  },
+  "paths": {
+    "zippedPackage": "solution/solathwebpt.sppkg"
+  }
+}
