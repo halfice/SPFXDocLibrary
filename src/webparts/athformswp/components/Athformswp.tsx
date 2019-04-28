@@ -199,7 +199,7 @@ export default class Athformswp extends React.Component<IAthformswpProps, {}> {
 
 
   public gettheFoldersInner(event: any): void {
-    var NewISiteUrl = this.props.SiteUrl;//"https://arabtec.sharepoint.com/sites/ATH";// this.props.SiteUrl;
+    var NewISiteUrl = this.props.SiteUrl;//"https://mysite.sharepoint.com/sites/ATH";// this.props.SiteUrl;
     var NewSiteUrl = NewISiteUrl.replace("/SitePages", "");
     let webx = new Web(NewSiteUrl);
     var CheckCurrentNumberNavigation = this.state.FlagStageForBreadCrum;
@@ -472,6 +472,7 @@ export default class Athformswp extends React.Component<IAthformswpProps, {}> {
           <DetailsList
             items={this.state._items}
             columns={this.state.FolderColumns}
+            selectionMode={SelectionMode.single}
             setKey="set"
             layoutMode={DetailsListLayoutMode.fixedColumns}
             selectionPreservedOnEmptyClick={true}
@@ -501,40 +502,40 @@ export default class Athformswp extends React.Component<IAthformswpProps, {}> {
           if (item.name.indexOf("item") > -1) {
             if (item.serverurls.indexOf(".pdf") > -1) {
               return (
-                <img src="https://***.sharepoint.com/sites/ATH/SiteAssets/pdf.png" width="35px" height="40px" />
+                <img src="https://mysite.sharepoint.com/sites/ATH/SiteAssets/pdf.png" width="30px" height="35px" />
               );
             }
             if (item.serverurls.indexOf(".doc") > -1 || item.serverurls.indexOf(".docx") > -1) {
               return (
-                <img src="https://***.sharepoint.com/sites/ATH/SiteAssets/dox.png" width="40px" height="40px" />
+                <img src="https://mysite.sharepoint.com/sites/ATH/SiteAssets/dox.png" width="40px" height="40px" />
               );
             }
 
             if (item.serverurls.indexOf(".pptx") > -1) {
               return (
-                <img src="https://***.sharepoint.com/sites/ATH/SiteAssets/pptx.png" width="40px" height="40px" />
+                <img src="https://mysite.sharepoint.com/sites/ATH/SiteAssets/pptx.png" width="40px" height="40px" />
               );
             }
             if (item.serverurls.indexOf(".mp4") > -1) {
               return (
-                <img src="https://***.sharepoint.com/sites/ATH/SiteAssets/mp4.png" width="40px" height="40px" />
+                <img src="https://mysite.sharepoint.com/sites/ATH/SiteAssets/mp4.png" width="40px" height="40px" />
               );
             }
 
             if (item.serverurls.indexOf(".otf") > -1 || item.serverurls.indexOf(".ttf") > -1) {
               return (
-                <img src="https://***.sharepoint.com/sites/ATH/SiteAssets/fonts.png" width="40px" height="40px" />
+                <img src="https://mysite.sharepoint.com/sites/ATH/SiteAssets/fonts.png" width="40px" height="40px" />
               );
             }
 
             if (item.serverurls.indexOf(".xlsx") > -1 || item.serverurls.indexOf(".xls") > -1) {
               return (
-                <img src="https://***.sharepoint.com/sites/ATH/SiteAssets/excel.png" width="40px" height="40px" />
+                <img src="https://mysite.sharepoint.com/sites/ATH/SiteAssets/excel.png" width="40px" height="40px" />
               );
             }
 
             return (
-              <img src="https://***.sharepoint.com/sites/ATH/SiteAssets/fonts.png" width="40px" height="40px" />
+              <img src="https://mysite.sharepoint.com/sites/ATH/SiteAssets/fonts.png" width="40px" height="40px" />
             );
 
 
@@ -543,18 +544,18 @@ export default class Athformswp extends React.Component<IAthformswpProps, {}> {
 
           } else {
             return (
-              <img src="https://arabtec.sharepoint.com/sites/ATH/SiteAssets/folder.png" width="40px" height="60px" />
+              <img src="https://mysite.sharepoint.com/sites/ATH/SiteAssets/folder.png" />
             );
           }
         case 'Name':
           if (item.name.indexOf("234item") > -1) {
             return (
-              item.Name
+             <div className={styles.foldersdivpadding}> {item.Name}</div>
             );
           } else {
 
             return (
-              item.Name
+              <div className={styles.foldersdivpadding} > {item.Name}</div>
             );
           }
 
